@@ -9,10 +9,15 @@ const UserSchema = mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     password: {
       required: true,
       type: String,
+    },
+    image: {
+      type: String,
+      required: true,
     },
     chats: [
       {
@@ -21,7 +26,7 @@ const UserSchema = mongoose.Schema(
       },
     ],
   },
-  {}
+  { timestamps: true }
 );
 
 export const User = mongoose.model("User", UserSchema);
