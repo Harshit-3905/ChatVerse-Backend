@@ -15,10 +15,6 @@ const UserSchema = mongoose.Schema(
       required: true,
       type: String,
     },
-    image: {
-      type: String,
-      required: true,
-    },
     chats: [
       {
         type: mongoose.Schema.Types.ObjectId,
