@@ -15,6 +15,12 @@ const UserSchema = mongoose.Schema(
       required: true,
       type: String,
     },
+    pic: {
+      type: String,
+      required: true,
+      default:
+        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+    },
     chats: [
       {
         type: mongoose.Schema.Types.ObjectId,

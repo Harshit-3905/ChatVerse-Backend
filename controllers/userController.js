@@ -1,6 +1,7 @@
 import { User } from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import asyncHandler from "express-async-handler";
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -8,7 +9,7 @@ const generateToken = (id) => {
   });
 };
 
-const loginUser = async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
@@ -24,9 +25,9 @@ const loginUser = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
+});
 
-const registerUser = async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const exists = await User.findOne({ email });
@@ -45,6 +46,6 @@ const registerUser = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
+});
 
 export { loginUser, registerUser };
