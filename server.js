@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
-import connectDB from "./db/db.js";
+import connectDB from "./src/db/db.js";
 import express from "express";
-import userRoutes from "./routes/userRoutes.js";
-import chatRoutes from "./routes/chatRoutes.js";
+import userRoutes from "./src/routes/userRoutes.js";
+import chatRoutes from "./src/routes/chatRoutes.js";
 import cors from "cors";
-import requireAuth from "./middleware/requireAuth.js";
+import requireAuth from "./src/middleware/requireAuth.js";
 
 dotenv.config();
 const app = express();
